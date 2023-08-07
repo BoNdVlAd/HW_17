@@ -1,0 +1,42 @@
+.contactBlock {
+  height: 50px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid grey;
+  background-color: #d4e6f1;
+  border-radius: 20px;
+  width: 99.8%;
+  color: #138d75;
+  font-weight: 600;
+  font-size: 16px;
+}
+.text {
+  justify-self: auto;
+  padding-left: 15%;
+}
+
+.events {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.events > * {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: inherit;
+  font-size: inherit;
+  color: #fff;
+}
+
+.events button:nth-child(1) {
+  background-color: #2ecc71;
+}
+.events button:nth-child(2) {
+  background-color: #f5b041;
+}

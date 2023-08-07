@@ -1,0 +1,49 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #3e7584;
+  height: 70px;
+  width: 100%;
+}
+
+.logo {
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.findInput {
+  border: none;
+  padding: 8px;
+  border-radius: 15px;
+}
+
+.logo {
+  font-size: 42px;
+  font-family: 'Edu SA Beginner', cursive;
+}
+body {
+  font-family: 'Work Sans', sans-serif;
+}
+.filters {
+  display: flex;
+  flex-direction: row;
+}
+.checkboxes {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+.checkboxes input {
+  cursor: pointer;
+}
