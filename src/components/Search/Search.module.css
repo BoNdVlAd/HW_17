@@ -4,3 +4,7 @@
   gap: 5px;
   margin-top: 5px;
 }
+input::placeholder {
+  font-family: 'Edu SA Beginner', cursive;
+  font-size: 18px;
+}

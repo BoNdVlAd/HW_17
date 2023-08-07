@@ -3,43 +3,49 @@ import Contact from '../Contact';
 import styles from './Contacts.module.css';
 
 class Contacts extends React.Component {
-  constructor(props1) {
-    const { props, search, male, female } = props1;
-    super(props1);
+  constructor(props) {
+    super(props);
+    const { contacts } = props;
     this.state = {
-      contacts: props,
-      search: search,
-      male: male,
-      female: female,
+      contacts: contacts,
     };
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-  handleSearch(value) {
-    console.log(value);
   }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
   static getDerivedStateFromProps(props, state) {
-    console.log('male', props.male);
-    console.log('female', props.female);
-    return {
-      contacts: props.props.filter((e) =>
-        (e.firstName + e.lastName).toLowerCase().includes(props.search.toLowerCase()),
-      ),
-      search: props.search,
-      male: props.male,
-      female: props.female,
-    };
+    if (props.male && props.female) {
+      return {
+        contacts: props.contacts.filter((e) =>
+          (e.firstName + e.lastName + e.phone).toLowerCase().includes(props.search.toLowerCase()),
+        ),
+      };
+    } else if (props.male) {
+      return {
+        contacts: props.contacts
+          .filter((e) =>
+            (e.firstName + e.lastName + e.phone).toLowerCase().includes(props.search.toLowerCase()),
+          )
+          .filter((e) => e.gender === 'male'),
+      };
+    } else if (props.female) {
+      return {
+        contacts: props.contacts
+          .filter((e) =>
+            (e.firstName + e.lastName + e.phone).toLowerCase().includes(props.search.toLowerCase()),
+          )
+          .filter((e) => e.gender === 'female'),
+      };
+    } else {
+      return {
+        contacts: props.contacts
+          .filter((e) =>
+            (e.firstName + e.lastName + e.phone).toLowerCase().includes(props.search.toLowerCase()),
+          )
+          .filter((e) => !e.gender),
+      };
+    }
   }
 
   render() {
-    console.log('CONTACTS STATE', this.state.search);
-
     return (
       <div className={styles.contacts}>
         {this.state.contacts.map((e, i) => (

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import Contacts from './components/Contacts';
@@ -41,7 +40,6 @@ const contacts = [
     gender: 'male',
   },
 ];
-export const searchValue = React.createContext(null);
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +50,6 @@ class App extends React.Component {
       checkedTwo: true,
     };
     this.handleSearch = this.handleSearch.bind(this);
-
     this.handleChangeOne = this.handleChangeOne.bind(this);
     this.handleChangeTwo = this.handleChangeTwo.bind(this);
   }
@@ -75,44 +72,40 @@ class App extends React.Component {
   }
   render() {
     return (
-      <searchValue.Provider value="">
-        <div className="container">
-          <div className="header">
-            <p className="logo">Contacts</p>
-            <div className="filters">
-              <Search handleSearch={this.handleSearch} />
-              <div className="checkboxes">
-                <label>
-                  <input
-                    type="checkbox"
-                    name=""
-                    checked={this.state.checkedOne}
-                    onChange={this.handleChangeOne}
-                  />
-                  male
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    name=""
-                    checked={this.state.checkedTwo}
-                    onChange={this.handleChangeTwo}
-                  />
-                  female
-                </label>
-              </div>
+      <div className="container">
+        <div className="header">
+          <p className="logo">Contacts</p>
+          <div className="filters">
+            <Search handleSearch={this.handleSearch} />
+            <div className="checkboxes">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={this.state.checkedOne}
+                  onChange={this.handleChangeOne}
+                />
+                male
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={this.state.checkedTwo}
+                  onChange={this.handleChangeTwo}
+                />
+                female
+              </label>
             </div>
           </div>
-          <div className="contacts">
-            <Contacts
-              props={contacts}
-              search={this.state.searchValue}
-              male={this.state.checkedOne}
-              female={this.state.checkedTwo}
-            />
-          </div>
         </div>
-      </searchValue.Provider>
+        <div className="contacts">
+          <Contacts
+            contacts={contacts}
+            search={this.state.searchValue}
+            male={this.state.checkedOne}
+            female={this.state.checkedTwo}
+          />
+        </div>
+      </div>
     );
   }
 }
